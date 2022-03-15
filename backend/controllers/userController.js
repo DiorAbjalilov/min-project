@@ -1,6 +1,7 @@
-const User = require("../models/User");
+const User = require("../models/loginUser");
 
-const register = async () => {
+// sigin post user register
+const register = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
     const user = new User({
@@ -19,4 +20,19 @@ const register = async () => {
   }
 };
 
-module.exports = { register };
+// get user login
+const login = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email, password });
+    res.status(201).json({ success: true, data: user });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      data: error,
+      message: "Something error login user",
+    });
+  }
+};
+
+module.exports = { register, login };

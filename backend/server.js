@@ -8,7 +8,7 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-app.use(require("morgan")("dev"));
+// app.use(require("morgan")("dev"));
 
 app.use("/api/user", require("./routers/users"));
 // app.use("/api/sigin");

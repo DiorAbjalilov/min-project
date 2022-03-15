@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 // const dbUri =
 //   'mongodb+srv://admin:admin2022@cluster0.7xf4q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 // const dbUri =mkd;
-const dbUri = "mongodb://localhost:27017/handemade";
+const dbUri = "mongodb://localhost:27017/mini-project";
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(dbUri, {
