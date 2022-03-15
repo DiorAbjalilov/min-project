@@ -1,5 +1,48 @@
 import React from "react";
 import "./login.css";
+import { useFormik } from "formik";
+
+const validate = (values) => {
+  const errors = {};
+  if (values.firstName) {
+    if (!values.firstName) {
+      errors.firstName = "Required";
+    } else if (values.firstName.length < 5) {
+      errors.firstName = "Must be 5 characters or less";
+    }
+
+    if (!values.email) {
+      errors.email = "Required";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ) {
+      errors.email = "Invalid email address";
+    }
+
+    if (!values.password) {
+      errors.password = "Required";
+    } else if (values.password.length < 6) {
+      errors.password = "Must be 6 characters or less";
+    }
+  } else {
+    if (!values.email) {
+      errors.email = "Required";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ) {
+      errors.email = "Invalid email address";
+    }
+
+    if (!values.password) {
+      errors.password = "Required";
+    } else if (values.password.length < 6) {
+      errors.password = "Must be 6 characters or less";
+    }
+  }
+
+  return errors;
+};
+
 const LoginPage = () => {
   const ClickHandleSignUp = () => {
     const container = document.querySelector("#container");
@@ -9,50 +52,93 @@ const LoginPage = () => {
     const container = document.querySelector("#container");
     container.classList.remove("right-panel-active");
   };
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      email: "",
+      password: "",
+    },
+    validate,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
+  // 2
+  const formikSigin = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validate,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
   return (
     <>
-      {/* <h2>Weekly Coding Challenge #1: Sign in/up Form</h2> */}
       <div className="container" id="container">
         <div className="form-container sign-up-container">
-          <form action="#">
+          <form onSubmit={formik.handleSubmit}>
             <h1>Create Account</h1>
-            {/* <div className="social-container">
-              <a href="#" className="social">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            </div> */}
+
             <span>or use your email for registration</span>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button>Sign Up</button>
+            <input
+              type="text"
+              placeholder="Name"
+              id="firstName"
+              name="firstName"
+              onChange={formik.handleChange}
+              value={formik.values.firstName}
+              className={`${formik.errors.firstName ? "error" : ""}`}
+            />
+            <input
+              type="text"
+              placeholder="Email"
+              id="email"
+              name="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              className={`${formik.errors.email ? "error" : ""}`}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              id="password"
+              name="password"
+              onChange={formik.handleChange}
+              value={formik.values.password}
+              className={`${formik.errors.password ? "error" : ""}`}
+            />
+            <button type="submit">Sign Up</button>
           </form>
         </div>
         <div className="form-container sign-in-container">
-          <form action="#">
+          <form onSubmit={formikSigin.handleSubmit}>
             <h1>Sign in</h1>
-            {/* <div className="social-container">
-              <a href="#" className="social">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            </div> */}
             <span>or use your account</span>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input
+              type="email"
+              placeholder="Email"
+              id="email1"
+              name="email"
+              onChange={formikSigin.handleChange}
+              value={formikSigin.values.email}
+              className={`${formikSigin.errors.email ? "error" : ""}`}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              id="password1"
+              name="password"
+              onChange={formikSigin.handleChange}
+              value={formikSigin.values.password}
+              className={`${formikSigin.errors.password ? "error" : ""}`}
+            />
             <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
+            <button type="submit">Sign In</button>
           </form>
         </div>
         <div className="overlay-container">
