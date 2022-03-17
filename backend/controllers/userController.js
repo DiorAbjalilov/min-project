@@ -1,4 +1,4 @@
-const User = require("../models/loginUser");
+const User = require("../models/Users");
 
 // sigin post user register
 const register = async (req, res, next) => {
