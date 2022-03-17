@@ -1,7 +1,10 @@
 const express = require("express");
+const { sendEmail_Reg } = require("../controllers/sendEmailRegController");
 const { register, login } = require("../controllers/userController");
 const router = express.Router();
-router.post("/sigin", register);
+
+// api
+router.post("/sigin", sendEmail_Reg);
 router.get("/login", login);
 
 module.exports = router;

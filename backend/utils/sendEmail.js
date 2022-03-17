@@ -1,15 +1,16 @@
 const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport(
   {
-    host: "smtp.yandex.ru",
-    port: 465,
+    host: "smtp.mail.ru",
+    port: 2525,
+    secure: false,
     auth: {
-      user: "test.2017@internet.ru",
-      pass: "w9MJTm66RjD25k6LXc9r",
+      user: "abjalilov.diyor@mail.ru",
+      pass: "Salom#123",
     },
   },
   {
-    from: "Nodemailer from site<support@test.2017@internet.ru>",
+    from: "Nodemailer from site<support@abjalilov.diyor@mail.ru>",
   }
 );
 const sendEmail = (message) => {

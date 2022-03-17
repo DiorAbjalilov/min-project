@@ -1,6 +1,6 @@
 const User = require("../models/Users");
 
-// sigin post user register
+// POST user register
 const register = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
@@ -20,7 +20,7 @@ const register = async (req, res, next) => {
   }
 };
 
-// get user login
+// GET user login
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
