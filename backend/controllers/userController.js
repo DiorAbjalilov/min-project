@@ -1,4 +1,5 @@
 const User = require("../models/Users");
+// const { randomNumber } = require("./sendEmailRegController");
 
 // POST user register
 const register = async (req, res, next) => {
@@ -14,7 +15,7 @@ const register = async (req, res, next) => {
   } catch (err) {
     res.status(500).json({
       success: false,
-      data: error,
+      data: err,
       message: "Something error creating user",
     });
   }
@@ -29,7 +30,7 @@ const login = async (req, res, next) => {
   } catch (err) {
     res.status(500).json({
       success: false,
-      data: error,
+      data: err,
       message: "Something error login user",
     });
   }
