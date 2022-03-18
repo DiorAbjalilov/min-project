@@ -4,7 +4,8 @@ const { register, login } = require("../controllers/userController");
 const router = express.Router();
 
 // api
-router.post("/sigin", sendEmail_Reg);
+router.post("/sendemail", sendEmail_Reg);
+router.post("/sigin", register);
 router.get("/login", login);
 
 module.exports = router;

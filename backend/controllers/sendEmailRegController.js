@@ -1,11 +1,10 @@
 const sendEmailReg = require("../utils/sendEmail");
-const User = require("../models/Users");
+const emailCod = require("../models/emailCod");
 
 const sendEmail_Reg = async (req, res, next) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email } = req.body;
     const randomNumber = Math.floor(Math.random() * 100000);
-    module.exports = { randomNumber };
     const emailMessage = {
       to: "abjalilovdiyor@gmail.com",
       subject: "TEST.test",
@@ -251,13 +250,12 @@ a, a:hover {
     };
     await sendEmailReg(emailMessage);
     res.status(200).json({ success: true, data: "Email is sent" });
-    // const user = new User({
-    //   username,
-    //   email,
-    //   password,
-    // });
-    // await user.save();
-    // res.status(201).json({ success: true, data: user });
+    const email_Cod = new emailCod({
+      email,
+      sendCode: randomNumber,
+    });
+    await email_Cod.save();
+    res.status(201).json({ success: true, data: email_Cod });
   } catch (err) {
     res.status(500).json({
       success: false,

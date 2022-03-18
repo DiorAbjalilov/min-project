@@ -1,17 +1,21 @@
 const User = require("../models/Users");
-// const { randomNumber } = require("./sendEmailRegController");
+const EmailCod = require("../models/emailCod");
 
 // POST user register
 const register = async (req, res, next) => {
   try {
-    const { username, email, password } = req.body;
-    const user = new User({
-      username,
-      email,
-      password,
-    });
-    await user.save();
-    res.status(201).json({ success: true, data: user });
+    const { username, email, password, emailCode } = req.body;
+    const isHasUserCod = await EmailCod.find({ sendCode: emailCode });
+    // console.log(isHasUserCod);
+    if (isHasUserCod) {
+      const user = new User({
+        username,
+        email,
+        password,
+      });
+      await user.save();
+      res.status(201).json({ success: true, data: user });
+    }
   } catch (err) {
     res.status(500).json({
       success: false,
