@@ -3,14 +3,13 @@ const transporter = nodemailer.createTransport(
   {
     host: "smtp.mail.ru",
     port: 2525,
-    secure: false,
     auth: {
       user: "abjalilov.diyor@mail.ru",
-      pass: "Salom#123",
+      pass: "UeeJSc5gm1nFckASBBYh",
     },
   },
   {
-    from: "Nodemailer from site<support@abjalilov.diyor@mail.ru>",
+    from: "Nodemailer from site<abjalilov.diyor@mail.ru>",
   }
 );
 const sendEmail = (message) => {

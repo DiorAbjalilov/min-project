@@ -6,7 +6,7 @@ const sendEmail_Reg = async (req, res, next) => {
     const { username, email, password } = req.body;
 
     const emailMessage = {
-      to: "abjalilovdiyor@gmail.com",
+      to: "abdurakhmonziyodov@gmail.com",
       subject: "TEST.test",
       html: `
           <html xmlns="http://www.w3.org/1999/xhtml">
