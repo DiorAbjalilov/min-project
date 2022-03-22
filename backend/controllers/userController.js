@@ -6,7 +6,6 @@ const register = async (req, res, next) => {
   try {
     const { username, email, password, emailCode } = req.body;
     const isHasUserCod = await EmailCod.find({ sendCode: emailCode });
-    // console.log(isHasUserCod);
     if (isHasUserCod) {
       const user = new User({
         username,
@@ -30,7 +29,7 @@ const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email, password });
-    res.status(201).json({ success: true, data: user });
+    res.status(200).json({ success: true, data: user });
   } catch (err) {
     res.status(500).json({
       success: false,
