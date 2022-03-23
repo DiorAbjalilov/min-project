@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins;
+}
+.bodyCode {
+  width: 100%;
+  background-color: #f2f4ff;
+  height: 100vh;
+  padding-top: 150px;
+  /* border: 1px solid red; */
+}
+.containerCode {
+  width: 400px;
+  /* height: 300px; */
+  background-color: #fff;
+  margin: auto;
+  border-radius: 11px;
+  padding: 40px 50px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+/* top-header */
+.top-header h1 {
+  text-align: center;
+  color: #495d76;
+  padding-bottom: 5px;
+}
+.top-header p {
+  color: #cecfd3;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+/* top-header */
+/* form */
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user input {
+  width: 60%;
+  height: 40px;
+  font-size: 19px;
+  border: none;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  outline: none;
+  padding: 0 10px;
+}
+::placeholder {
+  color: #9ca5b4;
+  font-size: 15px;
+}
+input.error {
+  border: 1px solid red;
+}
+.user i,
+.pass i {
+  position: relative;
+  top: 31px;
+  right: -10px;
+  color: #3981ed;
+}
+/* form */
+/* button */
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+.btn button {
+  border-radius: 20px;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  cursor: pointer;
+}
+/* button */
+p.last {
+  text-align: center;
+  position: relative;
+  bottom: 120px;
+  font-size: 12px;
+}
+.time-reset {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.time-reset i {
+  display: none;
+}

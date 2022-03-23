@@ -79,85 +79,95 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="container" id="container">
-        <div className="form-container sign-up-container">
-          <form onSubmit={formik.handleSubmit}>
-            <h1>Create Account</h1>
+      <div className="bodyLogin">
+        <div className="container" id="container">
+          <div className="form-container sign-up-container">
+            <form onSubmit={formik.handleSubmit}>
+              <h1>Create Account</h1>
 
-            <span>or use your email for registration</span>
-            <input
-              type="text"
-              placeholder="Name"
-              id="firstName"
-              name="firstName"
-              onChange={formik.handleChange}
-              value={formik.values.firstName}
-              className={`${formik.errors.firstName ? "error" : ""}`}
-            />
-            <input
-              type="text"
-              placeholder="Email"
-              id="email"
-              name="email"
-              onChange={formik.handleChange}
-              value={formik.values.email}
-              className={`${formik.errors.email ? "error" : ""}`}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              id="password"
-              name="password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
-              className={`${formik.errors.password ? "error" : ""}`}
-            />
-            <button type="submit">Sign Up</button>
-          </form>
-        </div>
-        <div className="form-container sign-in-container">
-          <form onSubmit={formikSigin.handleSubmit}>
-            <h1>Sign in</h1>
-            <span>or use your account</span>
-            <input
-              type="email"
-              placeholder="Email"
-              id="email1"
-              name="email"
-              onChange={formikSigin.handleChange}
-              value={formikSigin.values.email}
-              className={`${formikSigin.errors.email ? "error" : ""}`}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              id="password1"
-              name="password"
-              onChange={formikSigin.handleChange}
-              value={formikSigin.values.password}
-              className={`${formikSigin.errors.password ? "error" : ""}`}
-            />
-            <a href="#">Forgot your password?</a>
-            <button type="submit">Sign In</button>
-          </form>
-        </div>
-        <div className="overlay-container">
-          <div className="overlay">
-            <div className="overlay-panel overlay-left">
-              <h1>Welcome Back!</h1>
-              <p>
-                To keep connected with us please login with your personal info
-              </p>
-              <button className="ghost" id="signIn" onClick={ClickHandleSignIn}>
-                Sign In
-              </button>
-            </div>
-            <div className="overlay-panel overlay-right">
-              <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
-              <button className="ghost" id="signUp" onClick={ClickHandleSignUp}>
-                Sign Up
-              </button>
+              <span>or use your email for registration</span>
+              <input
+                type="text"
+                placeholder="Name"
+                id="firstName"
+                name="firstName"
+                onChange={formik.handleChange}
+                value={formik.values.firstName}
+                className={`${formik.errors.firstName ? "error" : ""}`}
+              />
+              <input
+                type="text"
+                placeholder="Email"
+                id="email"
+                name="email"
+                onChange={formik.handleChange}
+                value={formik.values.email}
+                className={`${formik.errors.email ? "error" : ""}`}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                id="password"
+                name="password"
+                onChange={formik.handleChange}
+                value={formik.values.password}
+                className={`${formik.errors.password ? "error" : ""}`}
+              />
+              <button type="submit">Sign Up</button>
+            </form>
+          </div>
+          <div className="form-container sign-in-container">
+            <form onSubmit={formikSigin.handleSubmit}>
+              <h1>Sign in</h1>
+              <span>or use your account</span>
+              <input
+                type="email"
+                placeholder="Email"
+                id="email1"
+                name="email"
+                onChange={formikSigin.handleChange}
+                value={formikSigin.values.email}
+                className={`${formikSigin.errors.email ? "error" : ""}`}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                id="password1"
+                name="password"
+                onChange={formikSigin.handleChange}
+                value={formikSigin.values.password}
+                className={`${formikSigin.errors.password ? "error" : ""}`}
+              />
+              <a href="#">Forgot your password?</a>
+              <button type="submit">Sign In</button>
+            </form>
+          </div>
+          <div className="overlay-container">
+            <div className="overlay">
+              <div className="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>
+                  To keep connected with us please login with your personal info
+                </p>
+                <button
+                  className="ghost"
+                  id="signIn"
+                  onClick={ClickHandleSignIn}
+                >
+                  Sign In
+                </button>
+              </div>
+              <div className="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button
+                  className="ghost"
+                  id="signUp"
+                  onClick={ClickHandleSignUp}
+                >
+                  Sign Up
+                </button>
+              </div>
             </div>
           </div>
         </div>
