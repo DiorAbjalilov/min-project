@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./sendcode.css";
-const ResCode = () => {
+const ResCode = ({ displayNone }) => {
   // const [timeVaule, setTimeValue] = useState(59);
   // const [timeHourVaule, setTimeHourValue] = useState(1);
   // function sleep(ms) {
@@ -29,7 +29,10 @@ const ResCode = () => {
   // clearTimeout(timeSecound);
   return (
     <>
-      <div className="bodyCode">
+      <div
+        className="bodyCode"
+        style={{ display: displayNone ? "block" : "none" }}
+      >
         <div className="containerCode">
           <div className="top-header">
             <div className="time-reset">
@@ -42,7 +45,7 @@ const ResCode = () => {
                         : `0${timeVaule}`
                     }`} */}
               </h1>
-              <i class="bx bx-revision"></i>
+              <i className="bx bx-revision"></i>
             </div>
             <p>Enter the confirmation code sent to the email</p>
           </div>

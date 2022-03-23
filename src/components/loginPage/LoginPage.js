@@ -1,6 +1,7 @@
 import React from "react";
 import "./login.css";
 import { useFormik } from "formik";
+import axios from "axios";
 
 const validate = (values) => {
   const errors = {};
@@ -43,7 +44,7 @@ const validate = (values) => {
   return errors;
 };
 
-const LoginPage = () => {
+const LoginPage = ({ ClickHandleSubmit, displayNone }) => {
   const ClickHandleSignUp = () => {
     const container = document.querySelector("#container");
     container.classList.add("right-panel-active");
@@ -60,7 +61,12 @@ const LoginPage = () => {
       password: "",
     },
     validate,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      const api = "https://localhost:5000/api/sendemail";
+      const data = await axios.post(api, {
+        email: values.email,
+      });
+      console.log(data);
       alert(JSON.stringify(values, null, 2));
     },
   });
@@ -79,7 +85,10 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="bodyLogin">
+      <div
+        className="bodyLogin"
+        style={{ display: displayNone ? "none" : "flex" }}
+      >
         <div className="container" id="container">
           <div className="form-container sign-up-container">
             <form onSubmit={formik.handleSubmit}>
@@ -113,7 +122,9 @@ const LoginPage = () => {
                 value={formik.values.password}
                 className={`${formik.errors.password ? "error" : ""}`}
               />
-              <button type="submit">Sign Up</button>
+              <button type="submit" onClick={ClickHandleSubmit}>
+                Sign Up
+              </button>
             </form>
           </div>
           <div className="form-container sign-in-container">

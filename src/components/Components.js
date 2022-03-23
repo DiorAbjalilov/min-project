@@ -1,11 +1,17 @@
 import React from "react";
-import LoginPage from "./loginPage/LoginPage";
-import ResCode from "./loginPage/ResCode";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginAndRes from "./loginPage/LoginAndRes";
 const Components = () => {
   return (
     <>
-      <LoginPage />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<h1>Default page</h1>} />
+          <Route path="/login" element={<LoginAndRes />} />
+          <Route path="/user" element={<h1>user page</h1>} />
+        </Routes>
+      </BrowserRouter>
+
       {/* <ResCode /> */}
     </>
   );
