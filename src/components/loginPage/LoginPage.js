@@ -62,7 +62,7 @@ const LoginPage = ({ ClickHandleSubmit, displayNone }) => {
     },
     validate,
     onSubmit: async (values) => {
-      const api = "https://localhost:5000/api/sendemail";
+      const api = "https://localhost:5000/api/user/sendemail";
       const data = await axios.post(api, {
         email: values.email,
       });
