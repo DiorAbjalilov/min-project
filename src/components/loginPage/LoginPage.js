@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import "./login.css";
 import { useFormik } from "formik";
@@ -75,7 +76,7 @@ const LoginPage = ({ ClickHandleSubmit, displayNone }) => {
         password: values.password,
       };
       const ResData = await ApiController("post", api, data);
-      console.log(ResData.data.success);
+      console.log(ResData.data);
       if (ResData.data.success) {
         localStorage.setItem("isLoginMe", JSON.stringify(data));
         setLoading(true);

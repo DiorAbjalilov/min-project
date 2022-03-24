@@ -7,7 +7,7 @@ const sendEmail_Reg = async (req, res, next) => {
     const { username, email } = req.body;
     const randomNumber = Math.floor(Math.random() * 100000);
     const emailMessage = {
-      to: "abjalilovdiyor@gmail.com",
+      to: `${email}`,
       subject: "TEST.test",
       html: `
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -250,17 +250,18 @@ a, a:hover {
           `,
     };
     const result = await Users.find({ email });
-    if (result) {
-      res.status(201).json({ success: false, data: true });
+    if (result.length) {
+      res.status(400).json({ success: false, data: {} });
+    } else {
+      await sendEmailReg(emailMessage);
+      res.status(200).json({ success: true, data: "Email is sent" });
+      const email_Cod = new emailCod({
+        email,
+        sendCode: randomNumber,
+      });
+      await email_Cod.save();
+      res.status(201).json({ success: true, data: email_Cod });
     }
-    await sendEmailReg(emailMessage);
-    res.status(200).json({ success: true, data: "Email is sent" });
-    const email_Cod = new emailCod({
-      email,
-      sendCode: randomNumber,
-    });
-    await email_Cod.save();
-    res.status(201).json({ success: true, data: email_Cod });
   } catch (err) {
     res.status(500).json({
       success: false,
