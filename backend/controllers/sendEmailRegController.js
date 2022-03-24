@@ -1,5 +1,6 @@
 const sendEmailReg = require("../utils/sendEmail");
 const emailCod = require("../models/emailCod");
+const Users = require("../models/Users");
 
 const sendEmail_Reg = async (req, res, next) => {
   try {
@@ -248,6 +249,10 @@ a, a:hover {
 </html>
           `,
     };
+    const result = await Users.find({ email });
+    if (result) {
+      res.status(201).json({ success: false, data: true });
+    }
     await sendEmailReg(emailMessage);
     res.status(200).json({ success: true, data: "Email is sent" });
     const email_Cod = new emailCod({

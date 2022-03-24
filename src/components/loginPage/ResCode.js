@@ -1,32 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./sendcode.css";
 const ResCode = ({ displayNone }) => {
-  // const [timeVaule, setTimeValue] = useState(59);
-  // const [timeHourVaule, setTimeHourValue] = useState(1);
-  // function sleep(ms) {
-  //   return new Promise((resolve) => setTimeout(resolve, ms));
-  // }
-  // async function delayedGreeting() {
-  //   console.log("Hello");
-  //   await sleep(2000);
-  //   console.log("World!");
-  //   await sleep(2000);
-  //   console.log("Goodbye!");
-  // }
-
-  // delayedGreeting();
-  // const timeSecound = () => {
-  //   setTimeout(() => {
-  //     if (timeVaule > 0) {
-  //       setTimeValue((p) => p - 1);
-  //     } else {
-  //       setTimeValue(59);
-  //       setTimeHourValue(0);
-  //     }
-  //   }, 1000);
-  // };
-  // timeSecound();
-  // clearTimeout(timeSecound);
   return (
     <>
       <div
