@@ -2,6 +2,7 @@ import React from "react";
 import "./login.css";
 import { useFormik } from "formik";
 import axios from "axios";
+import ApiController from "../fetchApiController/fetchApiController";
 
 const validate = (values) => {
   const errors = {};
@@ -62,12 +63,16 @@ const LoginPage = ({ ClickHandleSubmit, displayNone }) => {
     },
     validate,
     onSubmit: async (values) => {
-      const api = "https://localhost:5000/api/user/sendemail";
-      const data = await axios.post(api, {
+      const api = "http://localhost:5000/api/user/sendemail";
+      const data = {
+        username: values.firstName,
         email: values.email,
-      });
-      console.log(data);
-      alert(JSON.stringify(values, null, 2));
+        password: values.password,
+      };
+      console.log(values);
+      const ResData = await ApiController("post", api, data);
+      console.log(ResData.data);
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
