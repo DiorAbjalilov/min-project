@@ -5,7 +5,7 @@ const EmailCod = require("../models/emailCod");
 const register = async (req, res, next) => {
   try {
     const { username, email, password, emailCode } = req.body;
-    const isHasUserCod = await EmailCod.find({ sendCode: emailCode });
+    const isHasUserCod = await EmailCod.findOne({ sendCode: emailCode });
     if (isHasUserCod) {
       const user = new User({
         username,
@@ -15,6 +15,7 @@ const register = async (req, res, next) => {
       await user.save();
       res.status(201).json({ success: true, data: user });
     }
+    res.json({ success: false, data: {} });
   } catch (err) {
     res.status(500).json({
       success: false,

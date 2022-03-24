@@ -81,13 +81,13 @@ const LoginPage = ({ ClickHandleSubmit, displayNone }) => {
       const ResData = await ApiController("post", api, data);
       // console.log(ResData.data);
       if (ResData.data.success) {
-        localStorage.setItem("isLoginMe", JSON.stringify(data));
+        localStorage.setItem("myData", JSON.stringify(data));
         setLoading(true);
         ClickHandleSubmit();
       }
       if (!ResData.data.success) {
-        notify();
         setLoading(true);
+        notify();
       }
     },
   });

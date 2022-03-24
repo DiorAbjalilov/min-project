@@ -251,7 +251,7 @@ a, a:hover {
     };
     const result = await Users.find({ email });
     if (result.length) {
-      res.status(400).json({ success: false, data: {} });
+      res.json({ success: false, data: {} });
     } else {
       await sendEmailReg(emailMessage);
       res.status(200).json({ success: true, data: "Email is sent" });
