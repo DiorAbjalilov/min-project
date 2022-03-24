@@ -7,7 +7,7 @@ const ApiController = async (type, api, data) => {
       ResData = await res.data;
     }
     if (type === "get") {
-      const res = await axios.get(api);
+      const res = await axios.get(api, data);
       ResData = await res.data;
     }
     if (type === "put") {

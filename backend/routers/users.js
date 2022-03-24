@@ -5,7 +5,7 @@ const router = express.Router();
 
 // api
 router.post("/sendemail", sendEmail_Reg);
+router.post("/login", login);
 router.post("/sigin", register);
-router.get("/login", login);
 
 module.exports = router;

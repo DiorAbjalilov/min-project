@@ -29,7 +29,11 @@ const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email, password });
-    res.status(200).json({ success: true, data: user });
+    console.log(user);
+    if (user) {
+      res.status(200).json({ success: true, data: user });
+    }
+    res.json({ success: false, data: {} });
   } catch (err) {
     res.status(500).json({
       success: false,

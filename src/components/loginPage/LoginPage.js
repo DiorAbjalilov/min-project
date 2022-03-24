@@ -6,6 +6,7 @@ import ApiController from "../fetchApiController/fetchApiController";
 import LoadingComponent from "../fetchApiController/LoadingComponent";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -50,7 +51,9 @@ const validate = (values) => {
 
 const LoginPage = ({ ClickHandleSubmit, displayNone }) => {
   const [loading, setLoading] = useState(true);
+  let navigate = useNavigate();
   const notify = () => toast.error("This email is busy");
+  const notifyEmailNo = () => toast.error("Email not registered");
   const ClickHandleSignUp = () => {
     const container = document.querySelector("#container");
     container.classList.add("right-panel-active");
@@ -76,7 +79,7 @@ const LoginPage = ({ ClickHandleSubmit, displayNone }) => {
         password: values.password,
       };
       const ResData = await ApiController("post", api, data);
-      console.log(ResData.data);
+      // console.log(ResData.data);
       if (ResData.data.success) {
         localStorage.setItem("isLoginMe", JSON.stringify(data));
         setLoading(true);
@@ -96,8 +99,26 @@ const LoginPage = ({ ClickHandleSubmit, displayNone }) => {
       password: "",
     },
     validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      setLoading(false);
+      const api = "http://localhost:5000/api/user/login";
+      const data = {
+        email: values.email,
+        password: values.password,
+      };
+      const ResData = await ApiController("post", api, data);
+      console.log(ResData.data.data);
+      if (ResData.data.success) {
+        localStorage.setItem("isLoginMe", JSON.stringify(ResData.data.data));
+        setLoading(true);
+        navigate("/");
+        // ClickHandleSubmit();
+      }
+      if (!ResData.data.success) {
+        setLoading(true);
+        notifyEmailNo();
+      }
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
