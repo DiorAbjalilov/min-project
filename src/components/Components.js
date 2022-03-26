@@ -13,10 +13,11 @@ const Components = () => {
   useEffect(() => {
     if (!localStorage.getItem("isLoginMe")) {
       navigate("/login");
-    } else if (localStorage.getItem("isLoginMe")) {
+    }
+    if (localStorage.getItem("isLoginMe")) {
       navigate("/");
     }
-  }, [localStorage.getItem("isLoginMe")]);
+  }, [localStorage.getItem("isLoginMe"), navigate]);
   return (
     <>
       <Routes>

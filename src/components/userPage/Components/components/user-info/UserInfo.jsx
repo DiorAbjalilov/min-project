@@ -2,7 +2,9 @@ import React from "react";
 import "./user-info.scss";
 
 const UserInfo = ({ user }) => {
-  const userName = JSON.parse(localStorage.getItem("isLoginMe")).username;
+  if (localStorage.getItem("isLoginMe")) {
+    var userName = JSON.parse(localStorage.getItem("isLoginMe")).username;
+  }
   return (
     <div className="user-info">
       <div className="user-info__img">
