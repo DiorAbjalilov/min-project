@@ -2,10 +2,12 @@ import React, { useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import LoginAndRes from "./loginPage/LoginAndRes";
 import MainLayout from "./userPage/Components/layout/MainLayout";
-import Blank from "./userPage/Components/pages/Blank";
+import ToDoList from "./userPage/Components/pages/ToDoList";
 import Dashboard from "./userPage/Components/pages/Dashboard";
 import "./userPage/Components/assets/libs/boxicons-2.1.1/css/boxicons.min.css";
 import "./userPage/Components/scss/App.scss";
+import ProfilSetting from "./userPage/Components/pages/ProfilSetting";
+import GalleryList from "./userPage/Components/pages/GalleryList";
 const Components = () => {
   let navigate = useNavigate();
   useEffect(() => {
@@ -22,9 +24,9 @@ const Components = () => {
         <Route path="/user" element={<h1>user page</h1>} />
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="todo" element={<Blank />} />
-          <Route path="gallery" element={<Blank />} />
-          <Route path="settings" element={<Blank />} />
+          <Route path="todo" element={<ToDoList />} />
+          <Route path="gallery" element={<GalleryList />} />
+          <Route path="settings" element={<ProfilSetting />} />
         </Route>
       </Routes>
     </>
