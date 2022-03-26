@@ -17,7 +17,7 @@ const Components = () => {
     if (localStorage.getItem("isLoginMe")) {
       navigate("/");
     }
-  }, [localStorage.getItem("isLoginMe"), navigate]);
+  }, [localStorage.getItem("isLoginMe")]);
   return (
     <>
       <Routes>
