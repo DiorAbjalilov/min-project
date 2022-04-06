@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import "./stye.css";
 const ToDoList = () => {
   const {
     register,
@@ -10,37 +11,37 @@ const ToDoList = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div class="form-floating mb-3">
+        <div className="form-floating mb-3">
           <input
             type="text"
-            class="form-control"
             id="userName"
             placeholder="Jon"
+            className={`form-control ${errors.userName ? "errors" : ""}`}
             {...register("userName", { required: true })}
           />
-          <label for="userName">User Name</label>
+          <label htmlFor="userName">User Name</label>
         </div>
-        <div class="form-floating mb-3">
+        <div className="form-floating mb-3">
           <input
             type="text"
-            class="form-control"
             id="lastName"
             placeholder="Jon"
+            className={`form-control ${errors.lastName ? "errors" : ""}`}
             {...register("lastName", { required: true })}
           />
-          <label for="lastName">Last Name</label>
+          <label htmlFor="lastName">Last Name</label>
         </div>
-        <div class="form-floating">
+        <div className="form-floating">
           <textarea
-            class="form-control"
             placeholder="Leave a comment here"
             id="floatingTextarea2"
             style={{ height: "100px" }}
+            className={`form-control ${errors.comment ? "errors" : ""}`}
             {...register("comment", { required: true })}
           ></textarea>
-          <label for="floatingTextarea2">Comments</label>
+          <label htmlFor="floatingTextarea2">Comments</label>
         </div>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>
