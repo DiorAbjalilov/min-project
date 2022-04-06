@@ -1,13 +1,20 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { postRedux } from "../../../../store/actions";
+import { POST_FETCH } from "../../../../store/types";
 import "./stye.css";
 const ToDoList = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => alert(JSON.stringify(data));
+  const onSubmit = (data) => {
+    postRedux(data);
+    // dispatch({ type: POST_FETCH, payload: data });
+  };
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
