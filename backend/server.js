@@ -11,6 +11,6 @@ app.use(cors());
 // app.use(require("morgan")("dev"));
 
 app.use("/api/user", require("./routers/users"));
-// app.use("/api/sigin");
+app.use("/api/post", require("./routers/posts"));
 
 app.listen(PORT, console.log(`Server runing in Port => ${PORT}`));
