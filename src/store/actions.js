@@ -33,20 +33,20 @@ export function hideLoader() {
 export function getPostsApi() {
   return async (dispatch) => {
     try {
-      // dispatch(showLoader());
+      dispatch(showLoader());
       const userId = JSON.parse(localStorage.getItem("isLoginMe"))._id;
-      // console.log("asadssf");
-      const response = await axios.post(
-        "http://localhost:5000/api/post/userPosts",
-        {
-          userId,
-        }
-      );
+      const body = {
+        userId,
+      };
+      const api = "http://localhost:5000/api/post/userPosts";
+      const response = await axios.post(api, body);
       const resData = await response.data;
       dispatch({ type: POSTS_GET, payload: resData });
-      // return resData;
+      setTimeout(() => {
+        dispatch(hideLoader());
+      }, 500);
     } catch (error) {
-      console.log(error);
+      console.log("error message", error);
     }
   };
 }

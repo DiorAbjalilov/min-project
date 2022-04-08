@@ -1,7 +1,7 @@
 import { HIDE_LOADING, POSTS_GET, SHOW_LOADING } from "./types";
 
 const initialState = {
-  posts: {},
+  posts: [],
   isLoading: false,
 };
 const postReducer = (state = initialState, action) => {
