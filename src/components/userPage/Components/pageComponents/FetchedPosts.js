@@ -1,14 +1,31 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { getPostsApi } from "../../../../store/actions";
+import Loading from "./loading/Loading";
 
 const FetchedPosts = () => {
   const posts = [];
+  const dispatch = useDispatch();
   if (posts) {
     return (
-      <div className="d-grid gap-2 col-6 mx-auto">
-        <button className="btn btn-primary" type="button">
-          See all
-        </button>
-      </div>
+      <>
+        <div className="d-grid gap-2 col-6 mx-auto">
+          <button
+            onClick={() => dispatch(getPostsApi())}
+            className="btn btn-primary"
+            type="button"
+          >
+            See all
+          </button>
+        </div>
+      </>
+    );
+  }
+  if (posts) {
+    return (
+      <>
+        <Loading />
+      </>
     );
   }
   return (

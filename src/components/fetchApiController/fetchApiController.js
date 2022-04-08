@@ -10,14 +10,6 @@ const ApiController = async (type, api, data) => {
       const res = await axios.get(api, data);
       ResData = await res.data;
     }
-    if (type === "put") {
-      const res = await axios.put(api, data);
-      ResData = await res.data;
-    }
-    if (type === "delete") {
-      const res = await axios.delete(api);
-      ResData = await res.data;
-    }
   } catch (err) {
     console.log(err);
   }

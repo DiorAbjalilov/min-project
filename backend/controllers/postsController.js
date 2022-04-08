@@ -24,7 +24,8 @@ const addPosts = async (req, res) => {
 const getAllPosts = async (req, res) => {
   try {
     const { userId } = req.body;
-    const result = await Posts.findOne({ userId });
+    const result = await Posts.find({ userId });
+    console.log(result);
     await res.status(200).json({ success: true, data: result });
   } catch (error) {
     // console.log(error);

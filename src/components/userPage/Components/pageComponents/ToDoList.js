@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { postRedux } from "../../../../store/actions";
-import { POST_FETCH } from "../../../../store/types";
+import postFetchApi from "../../../../store/actions";
+import Alert from "./Alert";
 import "./stye.css";
 const ToDoList = () => {
-  const dispatch = useDispatch();
+  const [alertIs, setAlertIs] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
-  const onSubmit = (data) => {
-    postRedux(data);
-    // dispatch({ type: POST_FETCH, payload: data });
+  const onSubmit = async (data) => {
+    const api = "http://localhost:5000/api/post/add";
+    const resData = await postFetchApi("post", api, data);
+    setAlertIs(resData.seccuss);
+    console.log(resData);
+    setTimeout(() => {
+      setAlertIs(false);
+    }, 1000);
+    reset();
   };
   return (
     <>
@@ -48,9 +54,12 @@ const ToDoList = () => {
           ></textarea>
           <label htmlFor="floatingTextarea2">Comments</label>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        <div className="lert-Btn">
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+          {alertIs && <Alert />}
+        </div>
       </form>
     </>
   );
