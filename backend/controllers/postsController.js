@@ -25,8 +25,7 @@ const getAllPosts = async (req, res) => {
   try {
     const { userId } = req.body;
     const result = await Posts.find({ userId });
-    console.log(result);
-    await res.status(200).json({ success: true, data: result });
+    await res.status(200).json({ success: true, data: result.reverse() });
   } catch (error) {
     // console.log(error);
     res.status(400).json({ success: false, data: [] });

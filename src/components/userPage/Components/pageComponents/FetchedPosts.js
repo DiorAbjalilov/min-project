@@ -37,6 +37,15 @@ const FetchedPosts = () => {
               <div key={index} className="card mb-2">
                 <div className="card-header">
                   {post.userName} {post.lastName}
+                  <span
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      fontSize: "14px",
+                    }}
+                  >
+                    {post.createdAt.slice(0, 10)} {post.createdAt.slice(11, 16)}
+                  </span>
                 </div>
                 <div className="card-body">
                   <blockquote className="blockquote mb-0">
@@ -61,6 +70,14 @@ const FetchedPosts = () => {
               onChange={handleChange}
             />
           </Stack>
+          <button
+            type="button"
+            style={{ marginTop: "0", fontSize: "18px" }}
+            className="btn btn-light"
+            onClick={() => dispatch(getPostsApi())}
+          >
+            <i class="bx bx-reset"></i>
+          </button>
         </div>
       )}
     </>
