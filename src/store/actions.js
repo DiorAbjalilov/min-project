@@ -44,7 +44,7 @@ export function getPostsApi() {
       dispatch({ type: POSTS_GET, payload: resData });
       setTimeout(() => {
         dispatch(hideLoader());
-      }, 500);
+      }, 700);
     } catch (error) {
       console.log("error message", error);
     }

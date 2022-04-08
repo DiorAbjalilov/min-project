@@ -15,3 +15,8 @@
 .lert-Btn div {
   margin-bottom: 0 !important;
 }
+.page-block {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
