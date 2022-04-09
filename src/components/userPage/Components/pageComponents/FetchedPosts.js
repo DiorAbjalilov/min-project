@@ -52,6 +52,9 @@ const FetchedPosts = () => {
                     <p>{post.comment}</p>
                   </blockquote>
                 </div>
+                <div className="trash-id">
+                  <i className="bx bx-trash"></i>
+                </div>
               </div>
             </>
           );
