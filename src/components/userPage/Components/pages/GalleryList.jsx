@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { SHOW_MODAL } from "../../../../store/types";
 import GalerysList from "../pageComponents/GalerysList";
 
 const GalleryList = () => {
+  const dispatch = useDispatch();
   return (
     <>
       <div className="container">
@@ -19,12 +22,13 @@ const GalleryList = () => {
               style={{ marginTop: "0", fontSize: "20px", marginRight: "10px" }}
               className="btn btn-light"
             >
-              <i class="bx bx-refresh"></i>
+              <i className="bx bx-refresh"></i>
             </button>
             <button
               type="button"
               style={{ marginTop: "0", fontSize: "20px" }}
               className="btn btn-success"
+              onClick={() => dispatch({ type: SHOW_MODAL })}
             >
               <i className="bx bxs-add-to-queue"></i>
             </button>

@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Loading from "./loading/Loading";
 import "./galeryStyle.css";
+import ModalImage from "./ModalImage";
 
 const GalerysList = () => {
   const isLoader = useSelector((state) => state.posts.isLoading);
@@ -14,6 +15,7 @@ const GalerysList = () => {
   }
   return (
     <>
+      <ModalImage />
       <div id="container">
         <div className="polaroid">
           <img

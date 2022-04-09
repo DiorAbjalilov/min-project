@@ -76,7 +76,7 @@ const FetchedPosts = () => {
             className="btn btn-light"
             onClick={() => dispatch(getPostsApi())}
           >
-            <i class="bx bx-reset"></i>
+            <i className="bx bx-reset"></i>
           </button>
         </div>
       )}
