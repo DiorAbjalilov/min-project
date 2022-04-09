@@ -15,7 +15,6 @@ const ToDoList = () => {
     const api = "http://localhost:5000/api/post/add";
     const resData = await postFetchApi("post", api, data);
     setAlertIs(resData.seccuss);
-    console.log(resData);
     setTimeout(() => {
       setAlertIs(false);
     }, 1000);

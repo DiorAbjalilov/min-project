@@ -14,6 +14,9 @@ const postFetchApi = async (type, api, data) => {
     };
     const res = await axios.post(api, body);
     resData = await res.data;
+  } else if (type === "delete") {
+    const res = await axios.delete(api);
+    resData = await res.data;
   }
   return resData;
 };

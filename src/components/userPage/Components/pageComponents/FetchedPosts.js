@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPostsApi } from "../../../../store/actions";
+import postFetchApi, { getPostsApi } from "../../../../store/actions";
 import Loading from "./loading/Loading";
 import "./stye.css";
 import { Pagination, Stack } from "@mui/material";
@@ -12,6 +12,18 @@ const FetchedPosts = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
   const isLoader = useSelector((state) => state.posts.isLoading);
+
+  const mouseEnterHandeler = (e, index) => {
+    const trash_id = document.querySelectorAll(".trash-id")[index];
+    if (trash_id.classList[1] === "active") {
+      trash_id.classList.remove("active");
+    } else {
+      document.querySelectorAll(".trash-id").forEach((trash_one) => {
+        trash_one.classList.remove("active");
+      });
+      trash_id.classList.add("active");
+    }
+  };
 
   if (!posts.success) {
     return (
@@ -28,13 +40,18 @@ const FetchedPosts = () => {
       </>
     );
   }
+
   return (
     <>
       {!isLoader ? (
         posts.data.map((post, index) => {
           return (
             <>
-              <div key={index} className="card mb-2">
+              <div
+                key={index}
+                className="card mb-2"
+                onClick={(e) => mouseEnterHandeler(e, index)}
+              >
                 <div className="card-header">
                   {post.userName} {post.lastName}
                   <span
@@ -52,7 +69,17 @@ const FetchedPosts = () => {
                     <p>{post.comment}</p>
                   </blockquote>
                 </div>
-                <div className="trash-id">
+                <div
+                  className="trash-id"
+                  onClick={() =>
+                    dispatch(
+                      postFetchApi(
+                        "delete",
+                        `http://localhost:5000/api/post/delete/${post._id}`
+                      )
+                    )
+                  }
+                >
                   <i className="bx bx-trash"></i>
                 </div>
               </div>

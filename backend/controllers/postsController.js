@@ -32,4 +32,15 @@ const getAllPosts = async (req, res) => {
   }
 };
 
-module.exports = { addPosts, getAllPosts };
+// DELETE one post
+const deletePost = async (req, res) => {
+  try {
+    await Posts.findByIdAndDelete({ _id: req.params.id });
+    res.status(204).json({ success: true, data: [] });
+  } catch (error) {
+    console.log("error", error);
+    res.status(404).json({ success: false, data: [] });
+  }
+};
+
+module.exports = { addPosts, getAllPosts, deletePost };
