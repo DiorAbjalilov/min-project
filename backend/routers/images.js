@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const path = require("path");
 const { createOneImage } = require("../controllers/imageController");
 
 const storage = multer.diskStorage({
@@ -9,7 +8,7 @@ const storage = multer.diskStorage({
     cb(null, "./public/usersImage");
   },
   filename: function async(req, file, cb) {
-    cb(null, `${Date.now()}-${path.extname(file.originalname)}`);
+    cb(null, `${Date.now()}-${file.fieldname}`);
   },
 });
 const upload = multer({ storage: storage });

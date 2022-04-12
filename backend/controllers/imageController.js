@@ -1,14 +1,11 @@
 const Image = require("../models/image");
-// const path = require("path");
-// const fs = require("fs");
-// const UploadFile=require('../config/Sharp');
 
 const createOneImage = async (req, res, next) => {
   try {
-    // const { user_id } = req.body;
+    const { user_id } = req.body;
     const result = new Image({
-      image: `/public/usersImage/${req.file.filename}`,
-      //   user_id,
+      image: `/usersImage/${req.file.filename}`,
+      userId: user_id,
     });
     await result
       .save()
