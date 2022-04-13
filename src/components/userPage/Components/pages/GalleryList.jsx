@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { getImgsApi } from "../../../../store/actions";
 import { SHOW_MODAL } from "../../../../store/types";
 import GalerysList from "../pageComponents/GalerysList";
 
@@ -21,6 +22,7 @@ const GalleryList = () => {
               type="button"
               style={{ marginTop: "0", fontSize: "20px", marginRight: "10px" }}
               className="btn btn-light"
+              onClick={() => dispatch(getImgsApi())}
             >
               <i className="bx bx-refresh"></i>
             </button>

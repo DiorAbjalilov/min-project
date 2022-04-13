@@ -6,6 +6,13 @@ const imageSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    title: {
+      type: String,
+      required: true,
+    },
+    comment: {
+      type: String,
+    },
     userId: {
       type: mongoose.Schema.ObjectId,
       ref: "User",

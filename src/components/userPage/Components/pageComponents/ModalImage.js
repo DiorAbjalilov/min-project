@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { HIDE_MODAL } from "../../../../store/types";
+import { useForm } from "react-hook-form";
+import postFetchApi from "../../../../store/actions";
 
 const style = {
   position: "absolute",
@@ -16,7 +18,17 @@ const style = {
 };
 const ModalImage = () => {
   const isModal = useSelector((state) => state.posts.isModal);
+  const api = "http://localhost:5000/api/img/add";
   const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data, e) => {
+    e.preventDefault();
+    dispatch(postFetchApi("postImg", api, data));
+  };
   return (
     <div>
       <Modal
@@ -26,7 +38,7 @@ const ModalImage = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label htmlFor="title">Title</label>
               <input
@@ -35,6 +47,7 @@ const ModalImage = () => {
                 id="title"
                 placeholder="Enter title"
                 aria-label="default input example"
+                {...register("title", { required: true })}
               />
             </div>
             <div>
@@ -45,6 +58,7 @@ const ModalImage = () => {
                 id="comment"
                 placeholder="Enter comment"
                 aria-label="default input example"
+                {...register("comment", { required: true })}
               />
             </div>
             <div>
@@ -55,6 +69,7 @@ const ModalImage = () => {
                 id="image"
                 placeholder="Default input"
                 aria-label="default input example"
+                {...register("image", { required: true })}
               />
             </div>
             <button className="btn btn-success w-100">Submit</button>
