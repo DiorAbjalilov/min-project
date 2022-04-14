@@ -1,7 +1,12 @@
 import React from "react";
+import ProfilSettingPage from "../pageComponents/ProfilSettingPage";
 
 const ProfilSetting = () => {
-  return <div>Profil Setting</div>;
+  return (
+    <>
+      <ProfilSettingPage />
+    </>
+  );
 };
 
 export default ProfilSetting;

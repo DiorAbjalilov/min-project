@@ -22,19 +22,21 @@ const GalerysList = () => {
   return (
     <>
       <ModalImage />
-      <div id="container">
-        {imgs.map((img, index) => {
-          return (
-            <div className="polaroid" key={index}>
-              <img className="photo" src={img.image} alt="" />
-              <div className="capition">
-                <h2>{img.title}</h2>
-                <p>{img.comment}</p>
+      {imgs && (
+        <div id="container">
+          {imgs.map((img, index) => {
+            return (
+              <div className="polaroid" key={index}>
+                <img className="photo" src={img.image} alt="" />
+                <div className="capition">
+                  <h2>{img.title}</h2>
+                  <p>{img.comment}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };
