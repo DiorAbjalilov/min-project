@@ -44,4 +44,31 @@ const login = async (req, res, next) => {
   }
 };
 
-module.exports = { register, login };
+//
+const userUpdate = async (req, res, next) => {
+  try {
+    const { username, email, password, image, addres, phone } = req.body;
+    const isHasUserCod = await EmailCod.find();
+    if (isHasUserCod) {
+      const user = new User({
+        username,
+        email,
+        password,
+        image,
+        phone,
+        addres,
+      });
+      await user.save();
+      res.status(201).json({ success: true, data: user });
+    }
+    res.json({ success: false, data: {} });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      data: err,
+      message: "Something error creating user",
+    });
+  }
+};
+
+module.exports = { register, login, userUpdate };
