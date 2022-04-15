@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 // const dbUri =mkd;
 // diyor@2001
 // mongodb+srv://diyor:diyor@2001@mini-project1.ewnyi.mongodb.net/min-project
-// const dbUri = "mongodb://localhost:27017/mini-project";
-const dbUri =
-  "mongodb+srv://admin:admin20220208@maximartuz.66fyo.mongodb.net/maximart";
+const dbUri = "mongodb://localhost:27017/mini-project";
+// const dbUri =
+//   "mongodb+srv://admin:admin20220208@maximartuz.66fyo.mongodb.net/maximart";
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(dbUri, {
