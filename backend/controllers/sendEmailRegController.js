@@ -253,7 +253,7 @@ a, a:hover {
     if (result.length) {
       res.json({ success: false, data: {} });
     } else {
-      await sendEmailReg(emailMessage);
+      sendEmailReg(emailMessage);
       res.status(200).json({ success: true, data: "Email is sent" });
       const email_Cod = new emailCod({
         email,
@@ -263,7 +263,7 @@ a, a:hover {
       res.status(201).json({ success: true, data: email_Cod });
     }
   } catch (err) {
-    res.status(500).json({
+    res.status(464).json({
       success: false,
       data: err,
       message: "Something error creating user",

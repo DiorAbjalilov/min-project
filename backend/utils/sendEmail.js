@@ -13,7 +13,6 @@ const transporter = nodemailer.createTransport(
   }
 );
 const sendEmail = (message) => {
-  console.log("sss");
   transporter.sendMail(message, (err, info) => {
     if (err) return console.log(err);
     console.log("Email is sent", info);
