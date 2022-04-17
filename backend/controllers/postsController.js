@@ -15,7 +15,6 @@ const addPosts = async (req, res) => {
       res.status(201).json({ seccuss: true, data: result });
     });
   } catch (error) {
-    // console.log(error);
     res.status(400).json({ seccuss: false, data: {} });
   }
 };

@@ -11,6 +11,8 @@ const register = async (req, res, next) => {
         username,
         email,
         password,
+        phone: "",
+        addres: "",
       });
       await user.save();
       res.status(201).json({ success: true, data: user });
@@ -30,7 +32,6 @@ const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email, password });
-    console.log(user);
     if (user) {
       res.status(200).json({ success: true, data: user });
     }
