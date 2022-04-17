@@ -1,4 +1,10 @@
-import { HIDE_LOADING, IMG_GET, POSTS_GET, SHOW_LOADING } from "./types";
+import {
+  HIDE_LOADING,
+  IMG_GET,
+  POSTS_GET,
+  SHOW_LOADING,
+  USER_GET,
+} from "./types";
 import axios from "axios";
 
 const postFetchApi = async (type, api, data) => {
@@ -83,6 +89,26 @@ export function getImgsApi() {
       const response = await axios.post(api, body);
       const resData = await response.data;
       dispatch({ type: IMG_GET, payload: resData });
+      setTimeout(() => {
+        dispatch(hideLoader());
+      }, 700);
+    } catch (error) {
+      console.log("error message", error);
+    }
+  };
+}
+export function getUserApi() {
+  return async (dispatch) => {
+    try {
+      dispatch(showLoader());
+      const userId = JSON.parse(localStorage.getItem("isLoginMe"))._id;
+      const body = {
+        userId,
+      };
+      const api = "http://localhost:5000/api/user/me";
+      const response = await axios.post(api, body);
+      const resData = await response.data;
+      dispatch({ type: USER_GET, payload: resData });
       setTimeout(() => {
         dispatch(hideLoader());
       }, 700);

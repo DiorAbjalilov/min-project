@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./profilStyle.css";
 import TextField from "@mui/material/TextField";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserApi } from "../../../../store/actions";
 const ProfilSettingPage = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user.data);
+  useEffect(() => {
+    dispatch(getUserApi());
+  }, []);
   return (
     <>
       <div className="About_container">
@@ -13,9 +20,9 @@ const ProfilSettingPage = () => {
               </div>
               <div className="person_img_doc">
                 <div>
-                  <img src="/user.jpg" />
+                  <img src="/user.jpg" alt="" />
                 </div>
-                <p>User Name</p>
+                <p>{user.username}</p>
                 <button type="button" className="btn btn-primary">
                   Upload Avater
                 </button>
@@ -30,11 +37,12 @@ const ProfilSettingPage = () => {
                   id="outlined-basic"
                   label="Name"
                   variant="outlined"
+                  value={user.username}
                 />
                 <br />
                 <TextField
                   id="outlined-basic"
-                  label="email"
+                  label={user.email}
                   disabled
                   variant="outlined"
                 />
@@ -44,11 +52,13 @@ const ProfilSettingPage = () => {
                       id="outlined-basic"
                       label="Address"
                       variant="outlined"
+                      value={user.addres}
                     />
                     <TextField
                       id="outlined-basic"
                       label="Telephone number"
                       variant="outlined"
+                      value={user.phone}
                     />
                   </div>
                   <div className="form_right">
@@ -56,6 +66,7 @@ const ProfilSettingPage = () => {
                       id="outlined-basic"
                       label="Old Password"
                       variant="outlined"
+                      value={user.password}
                     />
                     <TextField
                       id="outlined-basic"

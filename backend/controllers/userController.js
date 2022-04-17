@@ -45,4 +45,16 @@ const login = async (req, res, next) => {
   }
 };
 
-module.exports = { register, login };
+// GET User ID
+const userGetId = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const user = await User.findOne({ _id: userId });
+    res.status(200).json({ success: true, data: user });
+  } catch (error) {
+    res.status(404).json({ success: true, data: [] });
+    console.log("error", error);
+  }
+};
+
+module.exports = { register, login, userGetId };
