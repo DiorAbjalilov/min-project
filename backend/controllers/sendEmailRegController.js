@@ -251,7 +251,7 @@ a, a:hover {
     };
     const result = await Users.find({ email });
     if (result.length) {
-      res.json({ success: false, data: {} });
+      await res.json({ success: false, data: {} });
     } else {
       sendEmailReg(emailMessage);
       res.status(200).json({ success: true, data: "Email is sent" });
@@ -260,7 +260,7 @@ a, a:hover {
         sendCode: randomNumber,
       });
       await email_Cod.save();
-      res.status(201).json({ success: true, data: email_Cod });
+      await res.status(201).json({ success: true, data: email_Cod });
     }
   } catch (err) {
     res.status(464).json({
