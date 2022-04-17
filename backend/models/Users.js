@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema(
     addres: {
       type: String,
     },
+    image: {
+      type: String,
+    },
   },
   {
     timestamps: true,
