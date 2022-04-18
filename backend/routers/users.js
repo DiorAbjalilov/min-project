@@ -23,6 +23,6 @@ router.post("/sendemail", sendEmail_Reg);
 router.post("/login", login);
 router.post("/sigin", register);
 router.post("/me", userGetId);
-router.post("/meUpd", upload.single("image"), userPutId);
+router.put("/meUpd", upload.single("image"), userPutId);
 
 module.exports = router;

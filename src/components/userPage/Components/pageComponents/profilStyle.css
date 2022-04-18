@@ -40,11 +40,17 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-color: blue;
+  border: 1px solid #999;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 15px 0;
+}
+.person_img_doc div img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 .person_img_doc div .person {
   font-size: 50px;

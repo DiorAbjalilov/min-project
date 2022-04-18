@@ -11,9 +11,9 @@ const register = async (req, res, next) => {
         username,
         email,
         password,
-        phone: "",
-        addres: "",
-        image: "",
+        phone: null,
+        addres: null,
+        image: null,
       });
       await user.save();
       res.status(201).json({ success: true, data: user });
@@ -62,17 +62,16 @@ const userGetId = async (req, res) => {
 const userPutId = async (req, res) => {
   try {
     const { username, password, addres, phone, userId } = req.body;
-    const user = await User.findOneAndUpdate({ _id: userId });
+    const user = await User.findByIdAndUpdate({ _id: userId });
     user.username = username;
     user.password = password;
     user.addres = addres;
     user.image = `/usersImage/${req.file.filename}`;
     user.phone = phone;
-
     await user.save();
     res.status(201).json({ success: true, data: user });
   } catch (error) {
-    res.status(404).json({ success: false, data: [] });
+    res.status(404).json({ success: false, data: error });
   }
 };
 
