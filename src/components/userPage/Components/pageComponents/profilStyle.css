@@ -58,8 +58,9 @@
 .person_img_doc P {
   color: rgb(165, 161, 161);
 }
-.person_img_doc button {
-  padding: 10px 15px;
+.person_img_doc input {
+  width: 100px;
+  /* padding: 10px 15px; */
   border: none;
   outline: none;
   cursor: pointer;

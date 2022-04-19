@@ -40,7 +40,25 @@ const postFetchApi = async (type, api, data) => {
       headers: { "Content-Type": "multipart/form-data" },
     });
     resData = await res.data;
-    console.log(resData);
+  } else if (type === "putUser") {
+    const { username, addres, phone, password, image } = data;
+    const selectFile = image[0];
+    // console.log("selectFile", selectFile);
+    const userId = JSON.parse(localStorage.getItem("isLoginMe"))._id;
+    const formData = new FormData();
+    formData.append("image", selectFile);
+    formData.append("userId", userId);
+    formData.append("username", username);
+    formData.append("addres", addres);
+    formData.append("phone", phone);
+    formData.append("password", password);
+    const res = await axios({
+      method: "put",
+      url: api,
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    resData = await res.data;
   }
   return resData;
 };
@@ -100,7 +118,7 @@ export function getImgsApi() {
 export function getUserApi() {
   return async (dispatch) => {
     try {
-      dispatch(showLoader());
+      // dispatch(showLoader());
       const userId = JSON.parse(localStorage.getItem("isLoginMe"))._id;
       const body = {
         userId,
@@ -109,9 +127,9 @@ export function getUserApi() {
       const response = await axios.post(api, body);
       const resData = await response.data;
       dispatch({ type: USER_GET, payload: resData });
-      setTimeout(() => {
-        dispatch(hideLoader());
-      }, 700);
+      // setTimeout(() => {
+      //   dispatch(hideLoader());
+      // }, 700);
     } catch (error) {
       console.log("error message", error);
     }
